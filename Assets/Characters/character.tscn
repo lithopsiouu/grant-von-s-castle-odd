@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxgfxkvii5d7h"]
+
+[ext_resource type="Texture2D" uid="uid://bhx8mvqvuopvn" path="res://Assets/Textures/Character/character_placeholder.tres" id="1_hebpt"]
+[ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_q466j"]
+[ext_resource type="Script" uid="uid://dqrtryqt1d1dg" path="res://Assets/Characters/CharacterStateMachine.gd" id="2_tpets"]
+[ext_resource type="Script" uid="uid://xtms7xyf1xn8" path="res://Assets/Characters/idle.gd" id="3_tpets"]
+[ext_resource type="Script" uid="uid://bkoa1norwm17" path="res://Assets/Characters/moving.gd" id="4_hebpt"]
+[ext_resource type="Script" uid="uid://cto14puy60vs4" path="res://Assets/Characters/dashing.gd" id="5_tpets"]
+[ext_resource type="Script" uid="uid://g1j2c860m28" path="res://Assets/Characters/Components/movement_component.gd" id="6_u44bp"]
+[ext_resource type="Script" uid="uid://lh8epl5lp2hw" path="res://Assets/Characters/Components/dash_component.gd" id="7_jqt06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqt06"]
+atlas = ExtResource("1_q466j")
+region = Rect2(176, 16, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqt06"]
+radius = 2.0
+height = 10.0
+
+[node name="Character" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 49
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.211765)
+position = Vector2(1.81899e-12, 0)
+rotation = 3.14159
+scale = Vector2(0.8, 0.4)
+texture = SubResource("AtlasTexture_jqt06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_hebpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_jqt06")
+debug_color = Color(0.617665, 0.48363, 0.621219, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tpets")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_tpets")
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("4_hebpt")
+
+[node name="MovementComponent" type="Node" parent="StateMachine/Moving" node_paths=PackedStringArray("character")]
+unique_name_in_owner = true
+script = ExtResource("6_u44bp")
+character = NodePath("../../..")
+metadata/_custom_type_script = "uid://g1j2c860m28"
+
+[node name="Dashing" type="Node" parent="StateMachine"]
+script = ExtResource("5_tpets")
+metadata/_custom_type_script = "uid://bqavs8ano0h7g"
+
+[node name="DashComponent" type="Node" parent="StateMachine/Dashing" node_paths=PackedStringArray("character")]
+unique_name_in_owner = true
+script = ExtResource("7_jqt06")
+character = NodePath("../../..")
+dash_speed = 3.2
+dash_decay = 0.35
+dash_cooldown = 0.2
+metadata/_custom_type_script = "uid://lh8epl5lp2hw"
