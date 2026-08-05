@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ddihb4tnrtvpj"]
+
+[ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_r3e11"]
+
+[resource]
+atlas = ExtResource("1_r3e11")
+region = Rect2(16, 96, 16, 16)
+margin = Rect2(0, -2, 0, -4)

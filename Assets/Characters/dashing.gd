@@ -7,6 +7,8 @@ var direction: Vector2 = Vector2.ZERO
 
 @export_category("State Settings")
 @export_enum("Dash to Move Direction", "Dash to Mouse Direction") var dash_direction_setting: String = "Dash to Move Direction"
+@export var stop_at_wall: bool = true ## Interrupt the dash when hitting a wall at a specified angle
+@export var collision_angle: float = 10 ## Maximum angle difference to wall normal to interrupt a dash
 
 @onready var dash_component: DashComponent = %DashComponent
 @onready var movement_component: MovementComponent = %MovementComponent
@@ -28,3 +30,6 @@ func _on_dash_finished() -> void:
 		state_machine.change_state("moving")
 	else:
 		state_machine.change_state("idle")
+
+func _on_wall_collision() -> void:
+	pass
