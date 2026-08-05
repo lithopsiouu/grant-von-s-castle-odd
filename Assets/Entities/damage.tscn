@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwa3himqxgaow"]
+
+[ext_resource type="Texture2D" uid="uid://qe3mb1pe2dm2" path="res://Assets/Textures/UI/Game/big_x.tres" id="1_mn45b"]
+[ext_resource type="Script" uid="uid://bmmfkyhrj7y44" path="res://Assets/Scripts/Hitbox.gd" id="2_tu37h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bpyk"]
+
+[node name="Damage" type="Sprite2D"]
+texture = ExtResource("1_mn45b")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("2_tu37h")
+continuous_damage = true
+metadata/_custom_type_script = "uid://bmmfkyhrj7y44"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_1bpyk")
