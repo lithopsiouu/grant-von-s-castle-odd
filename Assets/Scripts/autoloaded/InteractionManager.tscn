@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bttyvwhv6bn61"]
+
+[ext_resource type="FontFile" uid="uid://bjtcfh2mdod2d" path="res://Assets/UI/Fonts/CelticTime.ttf" id="1_cgkda"]
+[ext_resource type="Script" uid="uid://cow5ocux55xdo" path="res://Assets/Scripts/interaction/interaction_manager.gd" id="1_pxfp2"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_pxfp2")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_right = 24.0
+offset_bottom = 14.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_cgkda")
+theme_override_font_sizes/font_size = 16
+text = "[RMB]"
+horizontal_alignment = 1
+vertical_alignment = 1

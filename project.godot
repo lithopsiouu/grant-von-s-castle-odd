@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DamageNumbers="*res://Assets/Scripts/autoloaded/damage_numbers.gd"
+InteractionManager="*res://Assets/Scripts/autoloaded/InteractionManager.tscn"
 
 [display]
 
@@ -29,9 +30,15 @@ mouse_cursor/custom_image="uid://clatrcsnyulh6"
 
 folder_colors={
 "res://Assets/Characters/Components/": "blue",
+"res://Assets/Entities/test/": "teal",
 "res://Assets/Scripts/": "blue",
+"res://Assets/UI/Fonts/": "gray",
 "res://Scenes/Test/": "teal"
 }
+
+[global_group]
+
+Player=""
 
 [gui]
 

@@ -19,6 +19,7 @@ func display_number(value: float, position: Vector2, is_crit: bool = false):
 	number.label_settings.font_size = 18
 	number.label_settings.outline_size = 3
 	number.label_settings.outline_color = "#000"
+	number.label_settings.font = load("res://Assets/UI/Fonts/TripleN.ttf")
 	
 	call_deferred("add_child", number)
 	

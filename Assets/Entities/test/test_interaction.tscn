@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://csy6sj6p0dif1"]
+
+[ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_2aly0"]
+[ext_resource type="PackedScene" uid="uid://but5jjvfes1nh" path="res://Assets/Scripts/interaction/interaction area/interaction_area.tscn" id="2_lilgy"]
+[ext_resource type="Script" uid="uid://b8iixmv03pjla" path="res://Assets/Entities/test/test_interaction.gd" id="3_lilgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll4e1"]
+atlas = ExtResource("1_2aly0")
+region = Rect2(192, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edsfp"]
+atlas = ExtResource("1_2aly0")
+region = Rect2(16, 160, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n7yg"]
+radius = 30.0
+
+[node name="TestInteraction" type="Node2D" node_paths=PackedStringArray("interaction_area", "toggled_sprite")]
+script = ExtResource("3_lilgy")
+interaction_area = NodePath("InteractionArea")
+toggled_sprite = NodePath("circle2")
+
+[node name="circle" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ll4e1")
+
+[node name="circle2" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_edsfp")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_lilgy")]
+action_name = "Use"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_3n7yg")

@@ -20,10 +20,6 @@ func _ready() -> void:
 	bar_hide_timer.wait_time = bar_hide_time
 	bar_hide_timer.timeout.connect(_on_hide_timer_timeout)
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
-		take_damage(25)
-
 func take_damage(damage: float) -> void:
 	health -= damage
 	

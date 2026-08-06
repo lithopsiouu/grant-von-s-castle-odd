@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://clsgoreyb24eg"]
+[gd_scene load_steps=11 format=4 uid="uid://clsgoreyb24eg"]
 
 [ext_resource type="PackedScene" uid="uid://dxgfxkvii5d7h" path="res://Assets/Characters/character.tscn" id="1_8cxh6"]
 [ext_resource type="Texture2D" uid="uid://bmdhtedj28cv" path="res://Assets/Textures/World/craftpix_dungeon_PNG/walls_floor.png" id="1_emx4g"]
+[ext_resource type="Script" uid="uid://dfgfoucrio5iq" path="res://Assets/Characters/Components/midpoint_component.gd" id="3_coftm"]
 [ext_resource type="PackedScene" uid="uid://cwa3himqxgaow" path="res://Assets/Entities/damage.tscn" id="3_v3bw7"]
+[ext_resource type="PackedScene" uid="uid://csy6sj6p0dif1" path="res://Assets/Entities/test/test_interaction.tscn" id="5_4rt51"]
+[ext_resource type="PackedScene" uid="uid://cespax6k8emv3" path="res://Assets/Characters/Player/Player.tscn" id="5_262t5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3bw7"]
 atlas = ExtResource("1_emx4g")
@@ -565,11 +568,22 @@ tile_map_data = PackedByteArray("AAACAAAAAAAMABYAAAACAP//AAADAAcAAAACAP7/AAADAAY
 tile_set = SubResource("TileSet_coftm")
 
 [node name="Character" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(43, 33)
 
-[node name="Camera2D" type="Camera2D" parent="Character"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+[node name="Character2" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(96, 32)
+
+[node name="Character3" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(128, -8)
+
+[node name="Character4" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(128, -56)
+
+[node name="Character5" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(96, -80)
+
+[node name="Character6" parent="." instance=ExtResource("1_8cxh6")]
+position = Vector2(-40, -24)
 
 [node name="Damage" parent="." instance=ExtResource("3_v3bw7")]
 position = Vector2(-40, -40)
@@ -579,3 +593,20 @@ position = Vector2(24, -64)
 
 [node name="Damage3" parent="." instance=ExtResource("3_v3bw7")]
 position = Vector2(128, 48)
+
+[node name="TestInteraction" parent="." instance=ExtResource("5_4rt51")]
+position = Vector2(-80, -16)
+
+[node name="Player" parent="." instance=ExtResource("5_262t5")]
+position = Vector2(8, -24)
+
+[node name="MidpointComponent" type="Node2D" parent="Player" node_paths=PackedStringArray("point_a")]
+script = ExtResource("3_coftm")
+point_a = NodePath("..")
+use_mouse = "Mouse as Point b"
+metadata/_custom_type_script = "uid://dfgfoucrio5iq"
+
+[node name="Camera2D" type="Camera2D" parent="Player/MidpointComponent"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0

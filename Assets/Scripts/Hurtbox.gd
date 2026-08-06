@@ -13,6 +13,11 @@ var current_hitbox: Hitbox = null
 @export var hurt_cooldown_time: float = 0.1
 
 func _ready() -> void:
+	if health_component == null:
+		printerr("No health component found!")
+		process_mode = Node.PROCESS_MODE_DISABLED
+		return
+	
 	collision_layer = 10
 	collision_mask = 9
 	area_entered.connect(_on_area_entered)
@@ -48,7 +53,7 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	current_hitbox = hitbox
 	
 	if hitbox.owner == owner:
-		print("Hitbox owner is same as hurtbox!")
+		#print("Hitbox owner is same as hurtbox.")
 		return
 	
 	if ignored_areas.find_custom(compare_hitbox_rid.bind()) != -1:

@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxgfxkvii5d7h"]
+[gd_scene load_steps=13 format=3 uid="uid://dxgfxkvii5d7h"]
 
 [ext_resource type="Texture2D" uid="uid://bhx8mvqvuopvn" path="res://Assets/Textures/Character/character_placeholder.tres" id="1_hebpt"]
 [ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_q466j"]
 [ext_resource type="Script" uid="uid://dqrtryqt1d1dg" path="res://Assets/Characters/CharacterStateMachine.gd" id="2_tpets"]
 [ext_resource type="Script" uid="uid://xtms7xyf1xn8" path="res://Assets/Characters/idle.gd" id="3_tpets"]
 [ext_resource type="Script" uid="uid://bkoa1norwm17" path="res://Assets/Characters/moving.gd" id="4_hebpt"]
-[ext_resource type="Script" uid="uid://cto14puy60vs4" path="res://Assets/Characters/dashing.gd" id="5_tpets"]
 [ext_resource type="Script" uid="uid://g1j2c860m28" path="res://Assets/Characters/Components/movement_component.gd" id="6_u44bp"]
-[ext_resource type="Script" uid="uid://lh8epl5lp2hw" path="res://Assets/Characters/Components/dash_component.gd" id="7_jqt06"]
 [ext_resource type="Script" uid="uid://b5amex7vnsw48" path="res://Assets/Characters/Components/health_component.gd" id="10_ybm4l"]
 [ext_resource type="Script" uid="uid://uc3r0cqnhgt3" path="res://Assets/Scripts/Hurtbox.gd" id="11_3jd6r"]
 [ext_resource type="PackedScene" uid="uid://i1osc1blyflk" path="res://Assets/UI/health_bar.tscn" id="11_ioujv"]
@@ -21,7 +19,7 @@ radius = 2.0
 height = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybm4l"]
-size = Vector2(14, 19)
+size = Vector2(14, 21)
 
 [node name="Character" type="CharacterBody2D"]
 texture_filter = 1
@@ -59,19 +57,6 @@ unique_name_in_owner = true
 script = ExtResource("6_u44bp")
 character = NodePath("../../..")
 metadata/_custom_type_script = "uid://g1j2c860m28"
-
-[node name="Dashing" type="Node" parent="StateMachine"]
-script = ExtResource("5_tpets")
-metadata/_custom_type_script = "uid://bqavs8ano0h7g"
-
-[node name="DashComponent" type="Node" parent="StateMachine/Dashing" node_paths=PackedStringArray("character")]
-unique_name_in_owner = true
-script = ExtResource("7_jqt06")
-character = NodePath("../../..")
-dash_speed = 3.2
-dash_decay = 0.35
-dash_cooldown = 0.2
-metadata/_custom_type_script = "uid://lh8epl5lp2hw"
 
 [node name="TextureProgressBar" parent="." instance=ExtResource("11_ioujv")]
 modulate = Color(1, 1, 1, 0)

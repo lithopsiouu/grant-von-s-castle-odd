@@ -20,7 +20,7 @@ func _ready() -> void:
 		current_state = initial_state
 
 func _process(delta: float) -> void:
-	input_dir = Input.get_vector("move left", "move right","move up","move down")
+	#input_dir = Input.get_vector("move left", "move right","move up","move down")
 	
 	if current_state:
 		current_state.update(delta)
@@ -43,7 +43,7 @@ func change_state(new_state_name: String) -> void:
 	new_state.enter()
 	
 	current_state = new_state
-	print(str(new_state_name))
+	#print(str(new_state_name))
 
 ## Return a [Vector2] of [member CharacterBody2D.velocity] with [method move_toward] multiplied by [param speed].
 func _get_velocity_accel_decel_speed(_delta: float, input_dir: Vector2, body: CharacterBody2D, speed: float, speed_change: float) -> Vector2:

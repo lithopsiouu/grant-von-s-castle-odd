@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://cespax6k8emv3"]
+
+[ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_lojpt"]
+[ext_resource type="Script" uid="uid://6lgxdl4f1qac" path="res://Assets/Characters/Components/player_input_component.gd" id="3_l5lgs"]
+[ext_resource type="Script" uid="uid://dqrtryqt1d1dg" path="res://Assets/Characters/CharacterStateMachine.gd" id="3_uwbjk"]
+[ext_resource type="Script" uid="uid://xtms7xyf1xn8" path="res://Assets/Characters/idle.gd" id="4_xxkti"]
+[ext_resource type="Script" uid="uid://bkoa1norwm17" path="res://Assets/Characters/moving.gd" id="5_kieh0"]
+[ext_resource type="Script" uid="uid://g1j2c860m28" path="res://Assets/Characters/Components/movement_component.gd" id="6_caf14"]
+[ext_resource type="Script" uid="uid://cto14puy60vs4" path="res://Assets/Characters/dashing.gd" id="7_yskq4"]
+[ext_resource type="Script" uid="uid://lh8epl5lp2hw" path="res://Assets/Characters/Components/dash_component.gd" id="8_wvb8k"]
+[ext_resource type="PackedScene" uid="uid://i1osc1blyflk" path="res://Assets/UI/health_bar.tscn" id="9_5v4y6"]
+[ext_resource type="Script" uid="uid://b5amex7vnsw48" path="res://Assets/Characters/Components/health_component.gd" id="10_4oask"]
+[ext_resource type="Script" uid="uid://uc3r0cqnhgt3" path="res://Assets/Scripts/Hurtbox.gd" id="11_gfpb4"]
+[ext_resource type="Script" uid="uid://bmmfkyhrj7y44" path="res://Assets/Scripts/Hitbox.gd" id="12_l5lgs"]
+[ext_resource type="Script" uid="uid://ddg64yeuq38uw" path="res://Assets/Characters/Components/attack_component.gd" id="13_uwbjk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqt06"]
+atlas = ExtResource("1_lojpt")
+region = Rect2(176, 16, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_koeqb"]
+load_path = "res://.godot/imported/tilemap_packed.png-45b384dc339eaa27a80ca0a8ffab80bf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lojpt"]
+atlas = SubResource("CompressedTexture2D_koeqb")
+region = Rect2(16, 112, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqt06"]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybm4l"]
+size = Vector2(10, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwbjk"]
+radius = 26.0192
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 49
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.211765)
+position = Vector2(1.81899e-12, 0)
+rotation = 3.14159
+scale = Vector2(0.8, 0.4)
+texture = SubResource("AtlasTexture_jqt06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.635294, 0.745098, 0.486275, 1)
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_lojpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_jqt06")
+debug_color = Color(0.617665, 0.48363, 0.621219, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_uwbjk")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_xxkti")
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("5_kieh0")
+
+[node name="MovementComponent" type="Node" parent="StateMachine/Moving" node_paths=PackedStringArray("character")]
+unique_name_in_owner = true
+script = ExtResource("6_caf14")
+character = NodePath("../../..")
+metadata/_custom_type_script = "uid://g1j2c860m28"
+
+[node name="Dashing" type="Node" parent="StateMachine"]
+script = ExtResource("7_yskq4")
+dash_direction_setting = "Dash to Mouse Direction"
+metadata/_custom_type_script = "uid://bqavs8ano0h7g"
+
+[node name="DashComponent" type="Node" parent="StateMachine/Dashing" node_paths=PackedStringArray("character")]
+unique_name_in_owner = true
+script = ExtResource("8_wvb8k")
+character = NodePath("../../..")
+dash_speed = 3.2
+dash_decay = 0.35
+dash_cooldown = 0.2
+metadata/_custom_type_script = "uid://lh8epl5lp2hw"
+
+[node name="TextureProgressBar" parent="." instance=ExtResource("9_5v4y6")]
+modulate = Color(1, 1, 1, 0)
+offset_top = -25.0
+offset_bottom = -19.0
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("11_gfpb4")
+health_component = NodePath("../Components/HealthComponent")
+metadata/_custom_type_script = "uid://uc3r0cqnhgt3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ybm4l")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("12_l5lgs")
+damage = 25.0
+metadata/_custom_type_script = "uid://bmmfkyhrj7y44"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_uwbjk")
+debug_color = Color(1, 0, 0, 0.27451)
+
+[node name="Components" type="Node" parent="."]
+
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("state_machine", "attack_component")]
+script = ExtResource("3_l5lgs")
+state_machine = NodePath("../../StateMachine")
+attack_component = NodePath("../AttackComponent")
+metadata/_custom_type_script = "uid://6lgxdl4f1qac"
+
+[node name="HealthComponent" type="Node" parent="Components" node_paths=PackedStringArray("character", "health_bar")]
+script = ExtResource("10_4oask")
+character = NodePath("../..")
+health_bar = NodePath("../../TextureProgressBar")
+metadata/_custom_type_script = "uid://b5amex7vnsw48"
+
+[node name="AttackComponent" type="Node" parent="Components" node_paths=PackedStringArray("character", "hitbox", "input")]
+script = ExtResource("13_uwbjk")
+character = NodePath("../..")
+hitbox = NodePath("../../Hitbox")
+input = NodePath("../PlayerInputComponent")
+attack_length = 0.1
+attack_cooldown = 0.2
+continuous = true
+metadata/_custom_type_script = "uid://ddg64yeuq38uw"
