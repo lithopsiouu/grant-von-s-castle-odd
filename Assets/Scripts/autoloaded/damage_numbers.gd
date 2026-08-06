@@ -17,14 +17,14 @@ func display_number(value: float, position: Vector2, is_crit: bool = false):
 	
 	number.label_settings.font_color = color
 	number.label_settings.font_size = 18
-	number.label_settings.outline_size = 3
+	number.label_settings.outline_size = 8
 	number.label_settings.outline_color = "#000"
 	number.label_settings.font = load("res://Assets/UI/Fonts/TripleN.ttf")
 	
 	call_deferred("add_child", number)
 	
 	await number.resized
-	number.pivot_offset = Vector2(number.size /2)
+	number.pivot_offset = Vector2(number.size / 2)
 	
 	var number_jump_height: float = 24
 	

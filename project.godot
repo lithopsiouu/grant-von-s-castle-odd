@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Grant Von's Castle Odd"
+config/version="0.1"
 run/main_scene="uid://clsgoreyb24eg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.101999, 0.148535, 0.166459, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,8 +24,10 @@ InteractionManager="*res://Assets/Scripts/autoloaded/InteractionManager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://clatrcsnyulh6"
 
 [file_customization]
@@ -103,5 +107,6 @@ dash={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

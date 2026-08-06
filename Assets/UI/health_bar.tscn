@@ -1,20 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://i1osc1blyflk"]
 
-[ext_resource type="Texture2D" uid="uid://chrl3io4p4ob0" path="res://Assets/Textures/UI/Game/empty_circle.tres" id="1_qx73t"]
+[ext_resource type="Texture2D" uid="uid://ybow7jspab05" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tiles/tile_0030.png" id="1_vrh4g"]
 [ext_resource type="Texture2D" uid="uid://ddihb4tnrtvpj" path="res://Assets/Textures/UI/Game/h_bar.tres" id="3_sw71e"]
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
-offset_left = -17.0
+offset_left = -9.0
 offset_top = -3.0
-offset_right = 17.0
+offset_right = 9.0
 offset_bottom = 3.0
-pivot_offset = Vector2(17, 3)
+pivot_offset = Vector2(9, 3)
 mouse_filter = 2
 value = 100.0
 rounded = true
 nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_right = 5
-texture_under = ExtResource("1_qx73t")
+stretch_margin_left = 4
+stretch_margin_top = 1
+stretch_margin_right = 4
+stretch_margin_bottom = 1
+texture_under = ExtResource("1_vrh4g")
 texture_progress = ExtResource("3_sw71e")
+tint_under = Color(0.32, 0.2016, 0.221333, 1)
 tint_progress = Color(1, 0, 0, 1)
