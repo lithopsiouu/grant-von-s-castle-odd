@@ -1,6 +1,6 @@
 class_name MidpointComponent extends Node2D
 
-@export var point_a: CharacterBody2D
+@export var point_a: Node2D
 @export var point_b: Node2D
 
 @export_category("Midpoint Settings")
@@ -10,23 +10,23 @@ class_name MidpointComponent extends Node2D
 func _ready() -> void:
 	match use_mouse:
 		"Don't use mouse":
-			pass
+			if point_a == null or point_b == null:
+				printerr(self, ": One or more points have not been assigned to MidpointComponent!")
+				process_mode = Node.PROCESS_MODE_DISABLED
+				return
 		"Mouse as Point b":
 			point_b = Node2D.new()
 			owner.add_child(point_b)
 			point_b.global_position = point_b.get_global_mouse_position()
 
 func _process(delta: float) -> void:
-	if use_mouse != "Mouse as Point b":
-		if point_a == null:
-			return
-		printerr(self, ": One or more points have not been assigned to MidpointComponent!")
-		process_mode = Node.PROCESS_MODE_DISABLED
-		return
+	point_b.global_position = point_a.get_global_mouse_position()
 	
-	if use_mouse == "Mouse as Point b": 
-		point_b.global_position = point_a.get_global_mouse_position()
-	
+	global_position = get_midpoint()
+
+func get_midpoint() -> Vector2:
 	var midpoint = point_a.global_position.lerp(point_b.global_position, midpoint_bias)
-	
-	global_position = midpoint
+	return midpoint
+
+func _set_new_point_b(new_node: Node2D) -> void:
+	point_b = new_node

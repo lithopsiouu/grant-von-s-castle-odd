@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cespax6k8emv3"]
+[gd_scene load_steps=22 format=3 uid="uid://cespax6k8emv3"]
 
 [ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_lojpt"]
 [ext_resource type="Script" uid="uid://6lgxdl4f1qac" path="res://Assets/Characters/Components/player_input_component.gd" id="3_l5lgs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://uc3r0cqnhgt3" path="res://Assets/Scripts/Hurtbox.gd" id="11_gfpb4"]
 [ext_resource type="Script" uid="uid://bmmfkyhrj7y44" path="res://Assets/Scripts/Hitbox.gd" id="12_l5lgs"]
 [ext_resource type="Script" uid="uid://ddg64yeuq38uw" path="res://Assets/Characters/Components/attack_component.gd" id="13_uwbjk"]
+[ext_resource type="PackedScene" uid="uid://bnxeh6j8xh6ho" path="res://Assets/Characters/weapon_swinger.tscn" id="14_xxkti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqt06"]
 atlas = ExtResource("1_lojpt")
@@ -34,6 +35,10 @@ size = Vector2(10, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwbjk"]
 radius = 26.0192
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kieh0"]
+atlas = ExtResource("1_lojpt")
+region = Rect2(304, 112, 16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 texture_filter = 1
@@ -113,10 +118,12 @@ debug_color = Color(1, 0, 0, 0.27451)
 
 [node name="Components" type="Node" parent="."]
 
-[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("state_machine", "attack_component")]
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("state_machine", "attack_component", "weapon_swinger", "character")]
 script = ExtResource("3_l5lgs")
 state_machine = NodePath("../../StateMachine")
 attack_component = NodePath("../AttackComponent")
+weapon_swinger = NodePath("../../WeaponSwinger")
+character = NodePath("../..")
 metadata/_custom_type_script = "uid://6lgxdl4f1qac"
 
 [node name="HealthComponent" type="Node" parent="Components" node_paths=PackedStringArray("character", "health_bar")]
@@ -125,12 +132,27 @@ character = NodePath("../..")
 health_bar = NodePath("../../TextureProgressBar")
 metadata/_custom_type_script = "uid://b5amex7vnsw48"
 
-[node name="AttackComponent" type="Node" parent="Components" node_paths=PackedStringArray("character", "hitbox", "input")]
+[node name="AttackComponent" type="Node" parent="Components" node_paths=PackedStringArray("character", "hitbox", "input", "weapon_swinger", "attack_target", "rest_target")]
 script = ExtResource("13_uwbjk")
 character = NodePath("../..")
 hitbox = NodePath("../../Hitbox")
 input = NodePath("../PlayerInputComponent")
+weapon_swinger = NodePath("../../WeaponSwinger")
+attack_distance = 20.0
 attack_length = 0.1
 attack_cooldown = 0.2
 continuous = true
+attack_target = NodePath("../../atk_targ")
+rest_target = NodePath("../../rest_targ")
 metadata/_custom_type_script = "uid://ddg64yeuq38uw"
+
+[node name="WeaponSwinger" parent="." node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("14_xxkti")]
+weaponImage = SubResource("AtlasTexture_kieh0")
+texture_up = 90.0
+point_a = NodePath("../rest_targ")
+point_b = NodePath("../atk_targ")
+midpoint_bias = 0.0
+
+[node name="atk_targ" type="Node2D" parent="."]
+
+[node name="rest_targ" type="Node2D" parent="."]

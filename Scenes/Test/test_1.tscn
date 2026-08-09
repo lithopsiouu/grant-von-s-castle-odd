@@ -607,6 +607,5 @@ use_mouse = "Mouse as Point b"
 metadata/_custom_type_script = "uid://dfgfoucrio5iq"
 
 [node name="Camera2D" type="Camera2D" parent="Player/MidpointComponent"]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0

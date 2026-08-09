@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnxeh6j8xh6ho"]
+
+[ext_resource type="Script" uid="uid://c34dpn4klm52l" path="res://Assets/Characters/weapon_swinger.gd" id="1_lkidu"]
+[ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="2_0gvo7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h210"]
+atlas = ExtResource("2_0gvo7")
+region = Rect2(112, 80, 16, 16)
+
+[node name="WeaponSwinger" type="Node2D"]
+script = ExtResource("1_lkidu")
+metadata/_custom_type_script = "uid://dfgfoucrio5iq"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_4h210")

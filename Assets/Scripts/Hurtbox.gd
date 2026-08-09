@@ -96,7 +96,7 @@ func _on_area_exited(hitbox: Hitbox) -> void:
 		_remove_repeat_hurt_timer(hitbox)
 
 func _try_hurt_owner(hitbox: Hitbox) -> void:
-	DamageNumbers.display_number(hitbox.damage, global_position)
+	DamageNumbers.display_number(hitbox.damage, hitbox.global_position)
 	
 	if health_component != null:
 		health_component.take_damage(hitbox.damage)
