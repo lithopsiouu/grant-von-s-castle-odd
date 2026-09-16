@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bno1lsxs3c8sx"]
+
+[ext_resource type="Script" uid="uid://3r1sgofpii18" path="res://Assets/Entities/collectable_coin.gd" id="1_0odyr"]
+[ext_resource type="Script" uid="uid://clrikfy0lrn07" path="res://Assets/Items/coin.gd" id="1_swake"]
+[ext_resource type="Texture2D" uid="uid://b27kidsr8w432" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tiles/tile_0201.png" id="2_0odyr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0odyr"]
+radius = 15.0
+
+[node name="Coin" type="Node2D" node_paths=PackedStringArray("coin_module")]
+script = ExtResource("1_0odyr")
+coin_module = NodePath("Coin")
+
+[node name="Coin" type="Node" parent="."]
+script = ExtResource("1_swake")
+title = "Coin"
+lore = "Great for trade."
+metadata/_custom_type_script = "uid://clrikfy0lrn07"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0odyr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 4096
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0odyr")
+debug_color = Color(0.587491, 0.537888, 0.313112, 0.42)

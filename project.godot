@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 DamageNumbers="*res://Assets/Scripts/autoloaded/damage_numbers.gd"
 InteractionManager="*res://Assets/Scripts/autoloaded/InteractionManager.tscn"
+PointManager="*res://Assets/Scripts/autoloaded/point_manager.tscn"
 
 [display]
 
@@ -106,6 +107,8 @@ dash={
 2d_physics/layer_6="Enemy"
 2d_physics/layer_9="Hitbox"
 2d_physics/layer_10="Hurtbox"
+2d_physics/layer_13="Collector"
+2d_physics/layer_14="Collectable"
 
 [rendering]
 

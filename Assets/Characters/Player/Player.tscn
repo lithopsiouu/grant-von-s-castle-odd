@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cespax6k8emv3"]
+[gd_scene load_steps=24 format=3 uid="uid://cespax6k8emv3"]
 
 [ext_resource type="Texture2D" uid="uid://bqt2gk8141j6h" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tilemap/tilemap_packed.png" id="1_lojpt"]
 [ext_resource type="Script" uid="uid://6lgxdl4f1qac" path="res://Assets/Characters/Components/player_input_component.gd" id="3_l5lgs"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cto14puy60vs4" path="res://Assets/Characters/dashing.gd" id="7_yskq4"]
 [ext_resource type="Script" uid="uid://lh8epl5lp2hw" path="res://Assets/Characters/Components/dash_component.gd" id="8_wvb8k"]
 [ext_resource type="PackedScene" uid="uid://i1osc1blyflk" path="res://Assets/UI/health_bar.tscn" id="9_5v4y6"]
+[ext_resource type="Script" uid="uid://c12f5p7s70oum" path="res://Assets/Scripts/interaction/Collection/collection_area.gd" id="9_kieh0"]
 [ext_resource type="Script" uid="uid://b5amex7vnsw48" path="res://Assets/Characters/Components/health_component.gd" id="10_4oask"]
 [ext_resource type="Script" uid="uid://uc3r0cqnhgt3" path="res://Assets/Scripts/Hurtbox.gd" id="11_gfpb4"]
 [ext_resource type="Script" uid="uid://bmmfkyhrj7y44" path="res://Assets/Scripts/Hitbox.gd" id="12_l5lgs"]
@@ -29,6 +30,9 @@ region = Rect2(16, 112, 16, 16)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqt06"]
 radius = 2.0
 height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_caf14"]
+radius = 23.1948
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybm4l"]
 size = Vector2(10, 16)
@@ -96,6 +100,17 @@ metadata/_custom_type_script = "uid://lh8epl5lp2hw"
 modulate = Color(1, 1, 1, 0)
 offset_top = -25.0
 offset_bottom = -19.0
+
+[node name="CollectionArea" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 8192
+script = ExtResource("9_kieh0")
+metadata/_custom_type_script = "uid://c12f5p7s70oum"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_caf14")
+debug_color = Color(0.548978, 0.564226, 5.77569e-07, 0.42)
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("11_gfpb4")

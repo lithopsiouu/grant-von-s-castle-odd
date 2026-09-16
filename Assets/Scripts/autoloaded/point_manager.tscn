@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c040q0qnimudf"]
+
+[ext_resource type="Script" uid="uid://13pfeulrw1cb" path="res://Assets/Scripts/autoloaded/points_manager.gd" id="1_6japb"]
+[ext_resource type="FontFile" uid="uid://dixresbiqp1jh" path="res://Assets/UI/Fonts/Bitfantasy.ttf" id="2_miqpn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_snhu6"]
+font = ExtResource("2_miqpn")
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PointManager" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6japb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 51.0
+text = "777"
+label_settings = SubResource("LabelSettings_snhu6")
