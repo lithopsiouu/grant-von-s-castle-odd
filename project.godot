@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 DamageNumbers="*res://Assets/Scripts/autoloaded/damage_numbers.gd"
 InteractionManager="*res://Assets/Scripts/autoloaded/InteractionManager.tscn"
-PointManager="*res://Assets/Scripts/autoloaded/point_manager.tscn"
+PointsManager="*res://Assets/Scripts/autoloaded/points_manager.gd"
 
 [display]
 

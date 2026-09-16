@@ -1,20 +1,20 @@
-extends Control
+class_name PointManager extends Node
 
-@onready var cam: Camera2D = get_viewport().get_camera_2d()
-@onready var label: Label = $Label
+## Handles points and the changing of them.
 
 var _points: int = 0
+signal points_changed
 
 func _ready() -> void:
-	update_label()
+	points_changed.connect(_on_points_changed)
 
 func add_points(value: int) -> void:
 	_points += value
-	update_label()
+	points_changed.emit()
 
 func remove_points(value: int) -> void:
 	_points -= value
-	update_label()
+	points_changed.emit()
 
-func update_label() -> void:
-	label.text = str(_points)
+func _on_points_changed() -> void:
+	print("points: ", str(_points))

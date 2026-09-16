@@ -5,11 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://b27kidsr8w432" path="res://Assets/Textures/UI/kenney_cursor-pixel-pack/Tiles/tile_0201.png" id="2_0odyr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0odyr"]
-radius = 15.0
 
-[node name="Coin" type="Node2D" node_paths=PackedStringArray("coin_module")]
+[node name="Coin" type="Node2D" node_paths=PackedStringArray("coin")]
 script = ExtResource("1_0odyr")
-coin_module = NodePath("Coin")
+coin = NodePath("Coin")
 
 [node name="Coin" type="Node" parent="."]
 script = ExtResource("1_swake")
