@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdddpova32vae"]
+
+[ext_resource type="Script" uid="uid://cgckevjbbbavo" path="res://Assets/UI/coin_counter.gd" id="1_myvl2"]
+[ext_resource type="LabelSettings" uid="uid://c5a0fgn0ujoi4" path="res://Assets/UI/coin_counter_label_settings.tres" id="2_myvl2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag52s"]
+bg_color = Color(0.14501, 0.220196, 0.0864991, 1)
+border_width_left = 2
+border_width_top = 4
+border_color = Color(0.36731, 0.562261, 0.373562, 1)
+expand_margin_left = 10.0
+
+[node name="CoinCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_myvl2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ag52s")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "777777"
+label_settings = ExtResource("2_myvl2")
+vertical_alignment = 1

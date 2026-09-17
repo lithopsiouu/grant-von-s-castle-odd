@@ -10,11 +10,11 @@ func _ready() -> void:
 
 func add_points(value: int) -> void:
 	_points += value
-	points_changed.emit()
+	points_changed.emit(_points)
 
 func remove_points(value: int) -> void:
 	_points -= value
-	points_changed.emit()
+	points_changed.emit(_points)
 
 func _on_points_changed() -> void:
 	print("points: ", str(_points))

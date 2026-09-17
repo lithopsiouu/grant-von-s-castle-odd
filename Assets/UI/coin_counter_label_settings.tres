@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c5a0fgn0ujoi4"]
+
+[ext_resource type="FontFile" uid="uid://dixresbiqp1jh" path="res://Assets/UI/Fonts/Bitfantasy.ttf" id="1_myiqd"]
+
+[resource]
+font = ExtResource("1_myiqd")
+font_size = 25
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)

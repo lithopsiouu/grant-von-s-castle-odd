@@ -1,0 +1,6 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://dymats8tmoar4"]
+
+[ext_resource type="Curve" uid="uid://hcn4okqinck6" path="res://Assets/curves/back_curve.tres" id="1_bdqse"]
+
+[resource]
+curve = ExtResource("1_bdqse")

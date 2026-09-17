@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cemjk7qiytaj0"]
+
+[ext_resource type="Texture2D" uid="uid://mf3wt6jjnnnx" path="res://Assets/Textures/UI/Game/dot.tres" id="1_rh5oq"]
+[ext_resource type="Texture2D" uid="uid://dymats8tmoar4" path="res://Assets/curves/coin_collect_curve_texture.tres" id="2_r63tg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ftw12"]
+lifetime_randomness = 0.6
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 65.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -80.0
+linear_accel_max = -50.0
+scale_curve = ExtResource("2_r63tg")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+texture = ExtResource("1_rh5oq")
+lifetime = 0.7
+speed_scale = 1.2
+explosiveness = 0.9
+randomness = 0.95
+process_material = SubResource("ParticleProcessMaterial_ftw12")

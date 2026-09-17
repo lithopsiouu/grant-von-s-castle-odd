@@ -13,6 +13,7 @@ func collect(collector: Node2D) -> void:
 	area.queue_free()
 	
 	scale = Vector2(1.3, 1.3)
+	global_position.x += 1.0
 	await move_to_collector(collector)
 	
 	queue_free()
