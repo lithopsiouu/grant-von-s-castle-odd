@@ -10,7 +10,7 @@ var input_dir: Vector2 = Vector2.ZERO
 func update(_delta: float) -> void:
 	input_dir = state_machine.input_dir ## Input direction from [CharacterStateMachine]
 	
-	movement_component._update(input_dir)
+	movement_component._update(input_dir, _delta)
 	
 	if input_dir.length() == 0:
 		state_machine.change_state("idle")

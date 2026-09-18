@@ -80,6 +80,7 @@ script = ExtResource("5_kieh0")
 unique_name_in_owner = true
 script = ExtResource("6_caf14")
 character = NodePath("../../..")
+accel = 950.0
 metadata/_custom_type_script = "uid://g1j2c860m28"
 
 [node name="Dashing" type="Node" parent="StateMachine"]

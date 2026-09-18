@@ -1,0 +1,13 @@
+[gd_resource type="CurveXYZTexture" load_steps=4 format=3 uid="uid://ieio8oqm07fy"]
+
+[ext_resource type="Curve" uid="uid://dj26xlfi4m3gn" path="res://Assets/curves/sine.tres" id="1_hbfo1"]
+[ext_resource type="Curve" uid="uid://y34h53vwu7ql" path="res://Assets/curves/over.tres" id="2_fd6wo"]
+
+[sub_resource type="Curve" id="Curve_saiwe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+curve_x = ExtResource("1_hbfo1")
+curve_y = ExtResource("2_fd6wo")
+curve_z = SubResource("Curve_saiwe")
